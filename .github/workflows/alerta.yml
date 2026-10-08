@@ -15,6 +15,10 @@ jobs:
       - name: Ejecutar el programa Hola Mundo
         run: node index.js
 
-      - name: Enviar notificación a ntfy.sh
+      - name: Enviar notificación personalizada a ntfy.sh
         run: |
-          curl -d "Se ha realizado un push a la rama main exitosamente en el proyecto Hola Mundo." ntfy.sh/devops-itla
+          curl \
+            -H "Title: Despliegue Exitoso - Hola Mundo" \
+            -H "Tags: rocket,white_check_mark" \
+            -d "Se ha realizado un push exitoso a la rama main. Estudiante: Yhadel Lopez (Matrícula: 20242493). Repositorio: https://github.com/Yhadel/hola-mundo-actions.git" \
+            ntfy.sh/devops-itla
