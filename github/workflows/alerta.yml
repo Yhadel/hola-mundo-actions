@@ -1,0 +1,20 @@
+name: Notificacion de Deploy a ntfy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código del repositorio
+        uses: actions/checkout@v3
+
+      - name: Ejecutar el programa Hola Mundo
+        run: node index.js
+
+      - name: Enviar notificación a ntfy.sh
+        run: |
+          curl -d "Se ha realizado un push a la rama main exitosamente en el proyecto Hola Mundo." ntfy.sh/devops-itla
